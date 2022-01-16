@@ -44,7 +44,7 @@ func deleteLesson (lesson: String, lessons: [String]){
                 print("Некоторые элементы отсутствуют в хранилище, их удаление невозможно")
             }
         }
-        /* Возможно лучше было бы использовать нечто подобное - arrayOfLessons = arrayOfLessons.filter{!lessons.contains($0)}, но так как по условию, требовалось выводить сообщение, решил сделать через цикл */
+        
     }
     else{
         print("Хранилище пустое, удаление невозможно")
@@ -92,12 +92,24 @@ print(userMoney)
 // подготовленный массив
 arrayOfNumbers
 
+
+
 func calculateSumEvenOddValues(from array: [Int?]) -> (Int, Int) {
-  // TODO: выполнить код
-  return (0,0)
+    let uniqueArrayOfNumbers = Array(Set(arrayOfNumbers))
+    var sumOfNumbers: (Int, Int) = (0,0)
+    for number in uniqueArrayOfNumbers{
+        if let element = number{
+            if element % 2 == 0{
+                sumOfNumbers.0 += element
+            }
+            else{
+                sumOfNumbers.1 += element
+            }
+        }
+    }
+    return sumOfNumbers
 }
 
 // проверка решения Задача №3
 calculateSumEvenOddValues(from: arrayOfNumbers)
-
 
