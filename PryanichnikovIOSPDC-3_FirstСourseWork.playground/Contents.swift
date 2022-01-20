@@ -1,0 +1,44 @@
+import UIKit
+
+let timeAndStation = [["Невский проспект": 0],["Сенная площадь" : 3], ["Технологический институт": 7], ["Фрунзенская": 15], ["Московские ворота": 30], ["Электросила": 35], ["Парк победы": 40]]
+
+func travelTime (startStation: String, endStation: String) -> Int{
+    switch startStation{
+    case "Невский проспект","Сенная площадь", "Технологический институт","Фрунзенская","Московские ворота", "Электросила", "Парк победы" :
+        switch endStation{
+        case"Невский проспект","Сенная площадь", "Технологический институт","Фрунзенская","Московские ворота", "Электросила", "Парк победы" :
+            print("Всё ок")
+        default: print("Название второй станции введено неверно")
+        }
+    default: print("Название первой станции введено неверно")
+    }
+    var timeOnTravel = 0
+    for (numberOfFirstStation, stationDictionary) in timeAndStation.enumerated(){
+        for (firstStation) in stationDictionary.keys{
+            if firstStation == startStation{
+                for (numberOfStation2, stationDictionary2) in timeAndStation.enumerated(){
+                    for (secondStation) in stationDictionary2.keys{
+                        if secondStation == endStation{
+                            if let timeOnFirstStation = stationDictionary[firstStation], let timeOnSecondStation = stationDictionary2[secondStation]{
+                                if numberOfFirstStation - numberOfStation2 > 0{
+                                    timeOnTravel = timeOnFirstStation - timeOnSecondStation
+                                    print("От станции \(startStation) до станции \(endStation) \(timeOnTravel) минут")
+                                    return timeOnTravel
+                                }
+                                else{
+                                    timeOnTravel = timeOnSecondStation - timeOnFirstStation
+                                    print("От станции \(startStation) до станции \(endStation) \(timeOnTravel) минут")
+                                    return timeOnTravel
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return timeOnTravel
+}
+
+
+travelTime(startStation: "Московские ворота", endStation: "Московские ворота")
