@@ -12,11 +12,11 @@ func travelTime (startStation: String, endStation: String) -> Int{
             for (numberOfFirstStation, stationDictionary) in timeAndStation.enumerated(){
                 for (firstStation) in stationDictionary.keys{
                     if firstStation == startStation{
-                        for (numberOfStation2, stationDictionary2) in timeAndStation.enumerated(){
-                            for (secondStation) in stationDictionary2.keys{
+                        for (numberOfSecondStation, secondStationDictionary) in timeAndStation.enumerated(){
+                            for (secondStation) in secondStationDictionary.keys{
                                 if secondStation == endStation{
-                                    if let timeOnFirstStation = stationDictionary[firstStation], let timeOnSecondStation = stationDictionary2[secondStation]{
-                                        if numberOfFirstStation - numberOfStation2 > 0{
+                                    if let timeOnFirstStation = stationDictionary[firstStation], let timeOnSecondStation = secondStationDictionary[secondStation]{
+                                        if numberOfFirstStation - numberOfSecondStation > 0{
                                             timeOnTravel = timeOnFirstStation - timeOnSecondStation
                                             print("От станции \(startStation) до станции \(endStation) \(timeOnTravel) минут")
                                             return timeOnTravel
