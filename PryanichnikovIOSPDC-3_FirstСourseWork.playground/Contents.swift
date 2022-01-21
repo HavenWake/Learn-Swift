@@ -1,7 +1,6 @@
 import UIKit
 
-let timeAndStation = [["Невский проспект": 0],["Сенная площадь" : 3], ["Технологический институт": 7], ["Фрунзенская": 15], ["Московские ворота": 30],
-                      ["Электросила": 35], ["Парк победы": 40]]
+let timeAndStation = [["Невский проспект": 0],["Сенная площадь" : 3], ["Технологический институт": 7], ["Фрунзенская": 15], ["Московские ворота": 30], ["Электросила": 35], ["Парк победы": 40]]
 
 func travelTime (startStation: String, endStation: String) -> Int{
     var timeOnTravel = 0
@@ -10,10 +9,10 @@ func travelTime (startStation: String, endStation: String) -> Int{
         switch endStation{
         case"Невский проспект","Сенная площадь", "Технологический институт","Фрунзенская","Московские ворота", "Электросила", "Парк победы" :
             for (numberOfFirstStation, stationDictionary) in timeAndStation.enumerated(){
-                for (firstStation) in stationDictionary.keys{
+                for firstStation in stationDictionary.keys{
                     if firstStation == startStation{
                         for (numberOfSecondStation, secondStationDictionary) in timeAndStation.enumerated(){
-                            for (secondStation) in secondStationDictionary.keys{
+                            for secondStation in secondStationDictionary.keys{
                                 if secondStation == endStation{
                                     if let timeOnFirstStation = stationDictionary[firstStation], let timeOnSecondStation = secondStationDictionary[secondStation]{
                                         if numberOfFirstStation - numberOfSecondStation > 0{
@@ -33,11 +32,11 @@ func travelTime (startStation: String, endStation: String) -> Int{
                     }
                 }
             }
-        default: print("Название станции введено неверно")
+        default: print("Название станции введено неверно или такая станция отсутствует")
         }
-    default: print("Название станции введено неверно")
+    default: print("Название станции введено неверно или такая станция отсутствует")
     }
     return timeOnTravel
 }
 
-travelTime(startStation: "Сенная площадь", endStation: "Московские ворота")
+travelTime(startStation: "Московские ворота", endStation: "Парк победы")
