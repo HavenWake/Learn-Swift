@@ -39,4 +39,4 @@ func travelTime (startStation: String, endStation: String) -> Int{
     return timeOnTravel
 }
 
-travelTime(startStation: "Московские ворота", endStation: "Парк победы")
+travelTime(startStation: "Парк победы", endStation: "Московские ворота")
