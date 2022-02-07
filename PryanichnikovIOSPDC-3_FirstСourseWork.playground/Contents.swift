@@ -8,23 +8,14 @@ func travelTime (startStation: String, endStation: String) -> Int{
     case "Невский проспект","Сенная площадь", "Технологический институт","Фрунзенская","Московские ворота", "Электросила", "Парк победы" :
         switch endStation{
         case"Невский проспект","Сенная площадь", "Технологический институт","Фрунзенская","Московские ворота", "Электросила", "Парк победы" :
-            for (numberOfFirstStation, stationDictionary) in timeAndStation.enumerated(){
+            for (_, stationDictionary) in timeAndStation.enumerated(){
                 for firstStation in stationDictionary.keys{
                     if firstStation == startStation{
-                        for (numberOfSecondStation, secondStationDictionary) in timeAndStation.enumerated(){
+                        for (_, secondStationDictionary) in timeAndStation.enumerated(){
                             for secondStation in secondStationDictionary.keys{
                                 if secondStation == endStation{
                                     if let timeOnFirstStation = stationDictionary[firstStation], let timeOnSecondStation = secondStationDictionary[secondStation]{
-                                        if numberOfFirstStation - numberOfSecondStation > 0{
-                                            timeOnTravel = timeOnFirstStation - timeOnSecondStation
-                                            print("От станции \(startStation) до станции \(endStation) \(timeOnTravel) минут")
-                                            return timeOnTravel
-                                        }
-                                        else{
-                                            timeOnTravel = timeOnSecondStation - timeOnFirstStation
-                                            print("От станции \(startStation) до станции \(endStation) \(timeOnTravel) минут")
-                                            return timeOnTravel
-                                        }
+                                        timeOnTravel = timeOnFirstStation - timeOnSecondStation
                                     }
                                 }
                             }
@@ -36,7 +27,7 @@ func travelTime (startStation: String, endStation: String) -> Int{
         }
     default: print("Название станции введено неверно или такая станция отсутствует")
     }
-    return timeOnTravel
+    return abs(timeOnTravel)
 }
 
-travelTime(startStation: "Парк победы", endStation: "Московские ворота")
+travelTime(startStation: "Фрунзенская", endStation: "Сенная площадь")
