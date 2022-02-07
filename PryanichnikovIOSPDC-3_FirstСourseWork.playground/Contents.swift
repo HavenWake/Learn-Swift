@@ -4,17 +4,17 @@ let timeAndStation = [["Невский проспект": 0],["Сенная пл
 
 func travelTime (startStation: String, endStation: String) -> Int{
     var timeOnTravel = 0
-    switch startStation{
+    switch startStation {
     case "Невский проспект","Сенная площадь", "Технологический институт","Фрунзенская","Московские ворота", "Электросила", "Парк победы" :
-        switch endStation{
+        switch endStation {
         case"Невский проспект","Сенная площадь", "Технологический институт","Фрунзенская","Московские ворота", "Электросила", "Парк победы" :
-            for (_, stationDictionary) in timeAndStation.enumerated(){
-                for firstStation in stationDictionary.keys{
-                    if firstStation == startStation{
-                        for (_, secondStationDictionary) in timeAndStation.enumerated(){
-                            for secondStation in secondStationDictionary.keys{
-                                if secondStation == endStation{
-                                    if let timeOnFirstStation = stationDictionary[firstStation], let timeOnSecondStation = secondStationDictionary[secondStation]{
+            for (_, stationDictionary) in timeAndStation.enumerated() {
+                for firstStation in stationDictionary.keys {
+                    if firstStation == startStation {
+                        for (_, secondStationDictionary) in timeAndStation.enumerated() {
+                            for secondStation in secondStationDictionary.keys {
+                                if secondStation == endStation {
+                                    if let timeOnFirstStation = stationDictionary[firstStation], let timeOnSecondStation = secondStationDictionary[secondStation] {
                                         timeOnTravel = timeOnFirstStation - timeOnSecondStation
                                     }
                                 }
