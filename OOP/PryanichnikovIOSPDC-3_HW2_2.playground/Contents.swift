@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 //Задача 1
 enum CountryList: String {
     case Russia = "Russia"
@@ -23,6 +24,7 @@ struct Track {
 }
 
 var AudioTrack = Track.init(name: "My story", performer: "John", duration: 2.34, country: .Russia)
+var AudioTrackTwo = Track.init(name: "Nice song", performer: "Mara", duration: 4.55, country: .USA)
 
 class Category {
     var categoryName: String
@@ -43,13 +45,23 @@ class Category {
     }
 
     func deleteTrack(Track: Track) -> String {
+        for (numbers, name) in trackList.enumerated() {
+            if name.name == Track.name {
+                trackList.remove(at: numbers)
+            }
+        }
         return "Track deleted"
     }
 }
 
 var categoryRock = Category.init(categoryName: "Rock", numbersOfTrack: 0)
 categoryRock.addTrack(Track: AudioTrack)
-categoryRock.addTrack(Track: AudioTrack)
+categoryRock.addTrack(Track: AudioTrackTwo)
 categoryRock.numbersOfTrack
-//Задача 2
+categoryRock.deleteTrack(Track: AudioTrack)
+categoryRock.numbersOfTrack
 
+//Задача 2
+class Library {
+    
+}
