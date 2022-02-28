@@ -79,7 +79,7 @@ class Library {
     func addCategory(category: Category) {
         self.category.append(category)
     }
-    
+
     func deleteCategory(category: Category) {
         for (numbers, name) in self.category.enumerated() {
             if name.categoryName == category.categoryName {
@@ -93,6 +93,9 @@ class Library {
             if trackName.name == track.name, trackName.country == track.country, trackName.performer == track.performer {
                 categoryOut.deleteTrack(track: track)
                 categoryIn.addTrack(track: track)
+            }
+            else {
+                print("Трек отсутствует в категории")
             }
         }
     }

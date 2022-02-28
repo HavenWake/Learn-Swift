@@ -1,7 +1,5 @@
 import UIKit
-import Foundation
-import os
-import Darwin
+
 //Задача 1
 enum CountryList: String {
     case russia = "Russia"
@@ -15,12 +13,14 @@ struct Track {
     var duration: Double
     var country: CountryList
 
+
     init(name: String, performer: String, duration: Double, country: CountryList) {
         self.performer = performer
         self.duration = duration
         self.name = name
         self.country = country
     }
+
 }
 
 var audioTrack = Track.init(name: "My story", performer: "John", duration: 2.34, country: .russia)
@@ -36,7 +36,7 @@ class Category {
         }
     }
 
-    init(categoryName: String) {
+    init(categoryName: String, numbersOfTrack: Int) {
         self.categoryName = categoryName
     }
 
@@ -55,7 +55,7 @@ class Category {
     }
 }
 
-var rock = Category.init(categoryName: "Rock")
+var rock = Category.init(categoryName: "Rock", numbersOfTrack: 0)
 rock.addTrack(track: audioTrack)
 rock.addTrack(track: audioTrackSecond)
 rock.numbersOfTrack
@@ -64,49 +64,4 @@ rock.addTrack(track: audioTrackThird)
 rock.numbersOfTrack
 
 //Задача 2
-class Library {
-    var category: [Category]
-    var numbersOfCategory: Int {
-        get {
-            category.count
-        }
-    }
-
-    init(category: [Category]) {
-        self.category = category
-    }
-
-    func addCategory(category: Category) {
-        self.category.append(category)
-    }
-    
-    func deleteCategory(category: Category) {
-        for (numbers, name) in self.category.enumerated() {
-            if name.categoryName == category.categoryName {
-                self.category.remove(at: numbers)
-            }
-        }
-    }
-
-    func changeCategory(track: Track, categoryOut: Category, categoryIn: Category) {
-        for trackName in categoryOut.trackList {
-            if trackName.name == track.name, trackName.country == track.country, trackName.performer == track.performer {
-                categoryOut.deleteTrack(track: track)
-                categoryIn.addTrack(track: track)
-            }
-        }
-    }
-}
-
-var jazz = Category.init(categoryName: "Jazz")
-var pop = Category.init(categoryName: "Pop")
-var myLibrary = Library.init(category: [rock, jazz])
-
-myLibrary.addCategory(category: pop)
-myLibrary.category
-myLibrary.deleteCategory(category: pop)
-myLibrary.category
-myLibrary.numbersOfCategory
-
-//Задача 3
-myLibrary.changeCategory(track: audioTrackSecond, categoryOut: rock, categoryIn: jazz)
+class 
